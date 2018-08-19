@@ -24,6 +24,27 @@ public class Controller {
     public Label HelloLabel;
     public Label EnterInformationLabel;
     public Pane UsernameLabel;
+    public Label isConnected;
 
 
+    public void login(ActionEvent actionEvent) {
+
+        ConnectionClass connectionClass = new ConnectionClass();
+
+        Connection connection = connectionClass.getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT FROM userAuth WHERE username = "+ UsernameTextField.getText() +"AND password = " + PasswordTextField.getText();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            if (resultSet.next()){
+                isConnected.setText("Not Connected");
+
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+
+        }
+    }
 }

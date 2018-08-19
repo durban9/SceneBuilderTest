@@ -12,7 +12,7 @@ public class ConnectionClass {
 
         String dbname = "visionworks_database";
         String userName = "root";
-        String password = "1C0manche!";
+        String password = "VisionWorks1";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
