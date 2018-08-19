@@ -27,11 +27,14 @@ public class Controller {
     public Label isConnected;
 
 
+
     public void login(ActionEvent actionEvent) {
 
         ConnectionClass connectionClass = new ConnectionClass();
 
         Connection connection = connectionClass.getConnection();
+
+        isConnected.setText("");
 
         try {
             Statement statement = connection.createStatement();
@@ -39,8 +42,10 @@ public class Controller {
             ResultSet resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()){
-                isConnected.setText("Not Connected");
+                isConnected.setText("Connected");
 
+            } else {
+                isConnected.setText("Not Connected");
             }
         } catch (SQLException e){
             e.printStackTrace();
